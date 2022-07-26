@@ -28,7 +28,6 @@ namespace MITT_ROMMY_ZAMANUDDIN.Pages
             try
             {
                 string url = BaseURL + "UserProfile/Register";
-                //Reservation receivedReservation = new Reservation();
                 using (var httpClient = new HttpClient())
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(UserProfile), Encoding.UTF8, "application/json");

@@ -29,7 +29,6 @@ namespace MITT_ROMMY_ZAMANUDDIN.Pages
                 UserName = HttpContext.Session.GetString("username");
                 Token = HttpContext.Session.GetString("jwtToken");
                 string url = $"{BaseURL}UserProfile/GetUserProfileByUsername?username={UserName}";
-                //Reservation receivedReservation = new Reservation();
                 using (var httpClient = new HttpClient())
                 {
                     httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Token);
@@ -70,8 +69,6 @@ namespace MITT_ROMMY_ZAMANUDDIN.Pages
                             ErrorMessage = Token;
                         }
                     }
-
-
                 }
                 return Page();
             }

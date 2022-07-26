@@ -6,32 +6,66 @@
 <div class="card">
     <div class="card-body">
         <div class="form-group form-row">
-            <label class="col-form-label" asp-for="UserProfile.name">Name</label>
-            <input type="text" class="form-control" placeholder="Username" asp-for="UserProfile.name" />
-            <span asp-validation-for="UserProfile.name" class="text-danger"></span>
+            <label class="col-form-label" asp-for="UserProfile.TAG[0].name">Name</label>
+            <input type="text" class="form-control" placeholder="Username" asp-for="UserProfile.TAG[0].name" />
+            <span asp-validation-for="UserProfile.TAG[0].name" class="text-danger"></span>
         </div>
         <div class="form-group form-row">
-            <label class="col-form-label" asp-for="UserProfile.address">Address</label>
-            <textarea class="form-control" placeholder="Username" asp-for="UserProfile.address"></textarea>
-            <span asp-validation-for="UserProfile.address" class="text-danger"></span>
+            <label class="col-form-label" asp-for="UserProfile.TAG[0].address">Address</label>
+            <textarea class="form-control" placeholder="Username" asp-for="UserProfile.TAG[0].address"></textarea>
+            <span asp-validation-for="UserProfile.TAG[0].address" class="text-danger"></span>
         </div>
         <div class="form-group form-row">
-            <label class="col-form-label" asp-for="UserProfile.birthdate">Birth of Date</label>
-            <input type="date" class="form-control" placeholder="Username" asp-for="UserProfile.birthdate" />
-            <span asp-validation-for="UserProfile.birthdate" class="text-danger"></span>
+            <label class="col-form-label" asp-for="UserProfile.TAG[0].birthdate">Birth of Date</label>
+            <input type="date" class="form-control" placeholder="Username" asp-for="UserProfile.TAG[0].birthdate" />
+            <span asp-validation-for="UserProfile.TAG[0].birthdate" class="text-danger"></span>
         </div>
         <div class="form-group form-row">
-            <label class="col-form-label" asp-for="UserProfile.email">Email</label>
-            <input type="email" class="form-control" placeholder="Email" asp-for="UserProfile.email" />
-            <span asp-validation-for="UserProfile.email" class="text-danger"></span>
+            <label class="col-form-label" asp-for="UserProfile.TAG[0].email">Email</label>
+            <input type="email" class="form-control" placeholder="Email" asp-for="UserProfile.TAG[0].email" />
+            <span asp-validation-for="UserProfile.TAG[0].email" class="text-danger"></span>
         </div>
         <div class="form-group form-row">
             <div class="col text-right">
-                <button type="submit" class="btn btn-primary">{ api/Register }</button>
+                <button type="submit" class="btn btn-primary">{ api/Update }</button>
             </div>
         </div>
         <div class="form-group form-row">
             <span class="text-danger">@Model.ErrorMessage</span>
+        </div>
+        <div class="form-group form-row border-bottom">
+            <strong>User Skills</strong>
+        </div>
+        <div class="form-group form-row">
+            <button type="button" class="btn btn-info">Add New</button>
+        </div>
+        <div class="form-group form-row">
+            <div class="col">
+                <table class="table table-sm table-striped table">
+                    <tr>
+                        <th>Skill</th>
+                        <th>Level</th>
+                        <th>Action</th>
+                    </tr>
+                    @if (Model.UserSkillResult.TAG != null)
+                    {
+                        for (int i = 0; i < Model.UserSkillResult.TAG.Count; i++)
+                        {
+                            <tr>
+                                <td>@Model.UserSkillResult.TAG[i].SkillName</td>
+                                <td>@Model.UserSkillResult.TAG[i].SkillLevelName</td>
+                                <td class="text-danger">
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-primary">{ api/Edit }</button>
+                                        <button type="button" class="btn btn-danger">{ api/Delete }</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
         </div>
     </div>
 </div>

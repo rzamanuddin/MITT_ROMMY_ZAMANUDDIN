@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MITT_ROMMY_ZAMANUDDIN.Models;
@@ -45,7 +46,10 @@ namespace MITT_ROMMY_ZAMANUDDIN.Pages
                         }
                         else
                         {
-                            return RedirectToPage("/UserProfile", new { username = user.username });
+                            // store username & jwt token
+                            HttpContext.Session.SetString("username", user.username);
+                            HttpContext.Session.SetString("jwtToken", user.token);
+                            return RedirectToPage("/UserProfile");
                         }
                     }
                 }
